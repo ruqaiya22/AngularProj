@@ -17,8 +17,7 @@ export class AccountService {
   //So that we can use this variable ie http
   //For eg  this.http.get('https://localhost:7293/api/users').subscribe(res=>{
   constructor(private http:HttpClient) {
-
-
+    
   }
 
 getUsers(){
@@ -26,7 +25,8 @@ getUsers(){
   //this.http.get('https://localhost:7293/api/students')
    //this.http.get('https://localhost:7293/api/employees')
     //this.http.get('https://localhost:7293/api/users')
-  this.http.get(this.baseUrl + 'users');
+    //this will call server side url(api endpoint)
+  return this.http.get(this.baseUrl + 'users');
 }
 
 }

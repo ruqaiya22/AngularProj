@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AccountService } from './_services/account.service';
 
 //Decorator or Attribute
 //here AppComponent is component class since it is having decorator as @Component
@@ -18,7 +19,8 @@ export class AppComponent {
   //So here we are injecting this HttpClient as a service in Constructor 
   //So that we can use this variable ie http
   //For eg  this.http.get('https://localhost:7293/api/users').subscribe(res=>{
-  constructor(private http:HttpClient){
+    //here also using /injecting accountservice - private accountService:AccountService
+  constructor(private http:HttpClient, private accountService:AccountService){
    
   }
 
@@ -29,8 +31,9 @@ export class AppComponent {
   }
   //method-getUsers
   getUsers(){
-    //this will call server side url(api endpoint)
-    this.http.get('https://localhost:7293/api/users').subscribe(res=>{
+    
+    //Here calling method from accountService getUsers
+    this.accountService.getUsers().subscribe(res=>{
       //setting data from res(server data) to users variable that we created on line no 12
       this.users=res;
     },err=>{
