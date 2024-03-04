@@ -18,8 +18,14 @@ login(){
 console.log('login method called');
 
 
-//Printing model values
+//Printing model values - username and password
 console.log(this.model);
+
+this.account.login(this.model).subscribe( res =>{
+  console.log(res);
+},err => {
+  console.log(err);
+})
 
 }
 

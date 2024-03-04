@@ -29,5 +29,11 @@ getUsers(){
   return this.http.get(this.baseUrl + 'users');
 }
 
+//creating login method with parameter model - user name and password
+//and call server side login method
+login(model:any){
+  return this.http.post(this.baseUrl+'account/login',model);
+}
+
 }
 
