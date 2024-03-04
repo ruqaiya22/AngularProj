@@ -34,6 +34,7 @@ export class AppComponent {
     
     //Here calling method from accountService getUsers
     this.accountService.getUsers().subscribe(res=>{
+      console.log(res);
       //setting data from res(server data) to users variable that we created on line no 12
       this.users=res;
     },err=>{
