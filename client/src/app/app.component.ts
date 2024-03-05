@@ -20,7 +20,7 @@ export class AppComponent {
   //So that we can use this variable ie http
   //For eg  this.http.get('https://localhost:7293/api/users').subscribe(res=>{
     //here also using /injecting accountservice - private accountService:AccountService
-  constructor(private http:HttpClient, private accountService:AccountService){
+  constructor(private http:HttpClient, private account:AccountService){
    
   }
 
@@ -33,12 +33,12 @@ export class AppComponent {
   getUsers(){
     
     //Here calling method from accountService getUsers
-    this.accountService.getUsers().subscribe(res=>{
+    this.account.getUsers().subscribe(res=>{
       console.log(res);
       //setting data from res(server data) to users variable that we created on line no 12
       this.users=res;
-    },err=>{
-      console.log(err);
+    },e=>{
+      console.log(e);
     })
   }
 }

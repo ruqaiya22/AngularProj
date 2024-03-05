@@ -9,6 +9,8 @@ import { AccountService } from '../_services/account.service';
 export class NavComponent {
   title='Username and Password';
   model:any={};
+  loggedIn:boolean;
+
   constructor(private account:AccountService){
 
   }
@@ -22,10 +24,18 @@ console.log('login method called');
 console.log(this.model);
 
 this.account.login(this.model).subscribe( res =>{
-  console.log(res);
-},err => {
-  console.log(err);
+ // console.log(res);
+  this.loggedIn=true;
+  console.log(this.loggedIn);
+  
+},e => {
+  console.log(e);
 })
+
+}
+logout(){
+this.loggedIn=false;
+console.log(this.loggedIn);
 
 }
 
