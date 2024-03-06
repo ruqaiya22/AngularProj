@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/internal/operators/map';
 
 //Decorator or Attribute
 //here AccountService is service class since it is having decorator as @Injectable
@@ -32,8 +33,24 @@ getUsers(){
 //creating login method with parameter model - user name and password
 //and call server side login method
 login(model:any){
-  return this.http.post(this.baseUrl+'account/login',model);
+  return this.http.post(this.baseUrl+ 'account/login',model).pipe(
+    map((response:any) =>{
+      //printing the server side response
+
+      console.log(response);
+      //saving this response-(data) into variable const user
+      const user=response; 
+      if(user){
+        localStorage.setItem('user',JSON.stringify(user));
+      }
+    })
+  )
 }
+
+logout(){
+  localStorage.removeItem('user');
+  
+  }
 
 
 }

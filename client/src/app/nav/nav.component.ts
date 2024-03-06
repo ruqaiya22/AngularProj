@@ -35,7 +35,7 @@ this.account.login(this.model).subscribe( res =>{
 }
 logout(){
 this.loggedIn=false;
-console.log(this.loggedIn);
+this.account.logout();
 
 }
 
